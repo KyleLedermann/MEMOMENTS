@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.blue.css" id='jQMnDColor' />
+<title>jQuery Mobile Web App</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/nativedroid.script.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/camera.js"></script>
+<script type="text/javascript" src="js/geolocation.js"></script>
+<script type="text/javascript" src="js/EventDetail.js"></script>
+<script type="text/javascript" src="js/Event_local.js"></script>
+
+
+</head> 
+<body > 
+
+<!-- List page -->
+  <div data-role="page" data-theme='b'>
+	<div data-role="header">
+		<h1>Event list</h1>		
+	</div>
+	<div data-role="content">
+    <div id='EventList'></div>
+	<!--<ul data-role='listview' id='list' data-theme='c'>	
+        
+    </ul>-->  
+	
+
+<!-- Add Event page 
+<div data-role="page" id="page3" data-theme='b'>-->
+	<div data-role="header">
+		<h1>Add New Event</h1>
+	</div>
+    <div data-role="content">	
+	<div data-role="fieldcontain">    
+	    Register    <input type="text" name="Register" id="txtRegister"/> <br />
+        Password    <input type="password" name="Password" id="txtPassword"/> <br />
+        Mobile      <input type="tel" id="txtMobile" name="Mobile"/> <br />
+        EventName   <input type="text" id="txtEventName" name="EventName"/> <br />
+        From Date 	<input type="date" id="txtStartDate" name="StartDate"/><br />
+		To Date		<input type="date" id="txtEndDate" name="EndDate"/> <br />
+        Location    <input type="text" id="txtLocation" name="Location"/> <br />
+        Description <input type="text" id="txtDescription" name="Description" /> <br />
+        
+        <a href="" data-role="button" data-icon="star" data-theme="e" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</a>
+        <a href="" data-role="button" data-icon="star" data-theme="e" onclick="capturePhoto();">Capture Photo</a>
+  
+        <img style="display:none;width:100%;" id="smallImage" src="" />
+        <img style="display:none;width:100%;" id="largeImage" src="" />
+        <button data-icon="check" data-iconpos="right" data-theme="b" onclick="save();">Save</button>	   
+ 	</div>
+    </div>
+
+</div>
+
+<!-- View Event Detail -->
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>Event Detail</h1>
+	</div>
+	<div data-role="content">	
+		 <div id="eventdetail">
+		 </div>
+		 <a href="" data-role="button" data-icon="star" data-theme="e" id="view_location">View Location</a>
+	</div>
+</div>
+
+<!-- View Event Location -->
+<div data-role="page" id="page5">
+	<div data-role="header">
+		<h1>Event Location</h1>
+	</div>
+	<div data-role="content">
+		<p id="geolocation">Finding geolocation...</p>	
+		<div id="map_canvas">
+		</div>
+	</div>
+	<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+			
+				<ul>
+					<li><a href="#"><i class="fa fa-question-circle fa-lg"></i><p>Help</p></a></li>
+					<li><a href="#"><i class="fa fa-shield fa-lg"></i><p>Terms & Conditions</p></a></li>
+					<li><a href="#"><i class="fa fa-info-circle fa-lg"></i><p>Credits</p></a></li>
+					<li><a href="#"><p>Copyright 2013</p></a></li>
+				</ul>
+			</div>
+        </div>
+
+</div>
+
+</body>
+</html>
