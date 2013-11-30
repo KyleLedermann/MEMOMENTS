@@ -26,7 +26,7 @@
 <script type="text/javascript" src="js/geolocation.js"></script>
 <script type="text/javascript" src="js/EventDetail.js"></script>
 <script type="text/javascript" src="js/Event_local.js"></script>
-<script type="text/javascript" src="js/camera.js"></script>
+
 
 </head> 
 <body onload="displayAll();> 
@@ -52,7 +52,7 @@
 			</div>
         </div>
 
-
+</div>
 
 
 <!-- List page -->
@@ -85,16 +85,21 @@
 	</div>
     <div data-role="content">	
 	<div data-role="fieldcontain">    
-	   
+	    Register    <input type="text" name="Register" id="txtRegister"/> <br />
+        Password    <input type="password" name="Password" id="txtPassword"/> <br />
+        Mobile      <input type="tel" id="txtMobile" name="Mobile"/> <br />
+        EventName   <input type="text" id="txtEventName" name="EventName"/> <br />
+        From Date 	<input type="date" id="txtStartDate" name="StartDate"/><br />
+		To Date		<input type="date" id="txtEndDate" name="EndDate"/> <br />
         Location    <input type="text" id="txtLocation" name="Location"/> <br />
         Description <input type="text" id="txtDescription" name="Description" /> <br />
         
         <a href="" data-role="button" data-icon="star" data-theme="e" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</a>
-        <a href="" data-role="button" data-icon="star" data-theme="e" onclick="capturePhoto();">Take Photo</a>
+        <a href="" data-role="button" data-icon="star" data-theme="e" onclick="capturePhoto();">Capture Photo</a>
   
         <img style="display:none;width:100%;" id="smallImage" src="" />
         <img style="display:none;width:100%;" id="largeImage" src="" />
-        <button data-icon="check" data-iconpos="right" data-theme="b" onclick="verify();">Save</button>	   
+        <button data-icon="check" data-iconpos="right" data-theme="b" onclick="addEvent();">Save on sever</button>  
  	</div>
     </div>
 <div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
