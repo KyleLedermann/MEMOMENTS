@@ -24,37 +24,18 @@ function $ref(id){
 // Populate the database
 function populateDB(tx) {
     //tx.executeSql('DROP TABLE IF EXISTS fanevent');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS fanevent (id AUTO_INCREMENT unique, Register, password, mobile, eventname, startdate, enddate, location, description, image)');	
+	tx.executeSql('CREATE TABLE IF NOT EXISTS fanevent (id AUTO_INCREMENT unique, location, description, image)');	
 }
 
 function verify(){
 
     
-    var txtEvent = document.getElementById("txtEventName");
-    var txtRegister = document.getElementById("txtRegister");
-    var txtStartDate = document.getElementById("txtStartDate");
-    var txtEndDate = document.getElementById("txtEndDate");
+  
     var txtLocation = document.getElementById("txtLocation");
     var txtDescription = document.getElementById("txtDescription");
-    var txtPassword = document.getElementById("txtPassword");
 
 
-    if (txtEvent.value == "") {
-        alert("plz enter EventName");
-        return false;
-    }
-    else if (txtRegister.value == "") {
-        alert("plz enter RegisterName");
-        return false;
-    }
-    else if (txtStartDate.value == "") {
-        alert("plz enter StartDate");
-        return false;
-    }
-    else if (txtEndDate.value == "") {
-        alert("plz enter EndDate");
-        return false;
-    }
+
     else if (txtLocation.value == "") {
         alert("plz enter Location");
         return false;
@@ -63,10 +44,7 @@ function verify(){
         alert("plz enter Description");
         return false;
     }
-    else if (txtPassword.value == "") {
-        alert("plz enter Password");
-        return false;
-    }
+ 
 	else{
 		save();	
 	}	
@@ -81,7 +59,7 @@ function save()
 
 function insertDB(tx)
 {
-		var sqlQuery = 'INSERT INTO fanevent (Register, password, mobile, eventname, startdate, enddate, location, description, image)VALUES ("'+$ref(			"txtRegister").value+'","'+$ref("txtPassword").value+'","'+$ref("txtMobile").value+'","'+$ref("txtEventName").value+'","'+$ref("txtStartDate").value+'","'+$ref("txtEndDate").value+'","'+$ref("txtLocation").value+'","'+$ref("txtDescription").value+'","Image")';
+		var sqlQuery = 'INSERT INTO fanevent (Register, password, mobile, eventname, startdate, enddate, location, description, image)VALUES ("'+$ref("txtLocation").value+'","'+$ref("txtDescription").value+'","Image")';
 		tx.executeSql(sqlQuery);
 }
 
@@ -109,7 +87,7 @@ function querySuccess(tx, results) {
 		//console.log("Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data);
 		//value = "Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data;
 		//alert(value);
-		tblData+="<tr><td>" + results.rows.item(i).Register + "</td><td>" + results.rows.item(i).password + "</td><td>" + results.rows.item(i).mobile + "</td><td>" + results.rows.item(i).eventname + "</td><td>" + results.rows.item(i).startdate + "</td><td>" + results.rows.item(i).enddate + "</td><td>" + results.rows.item(i).location + "</td><td>" + results.rows.item(i).description + "</td><td>" + results.rows.item(i).image + "</td></tr>";
+		tblData+="<tr><td>" +  results.rows.item(i).location + "</td><td>" + results.rows.item(i).description + "</td><td>" + results.rows.item(i).image + "</td></tr>";
 	}
 	tblData+="</table>";
 	//var divTable=document.getElementById('divResults');	
