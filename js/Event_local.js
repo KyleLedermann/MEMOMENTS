@@ -10,10 +10,6 @@ console.log('deviceready');
     pictureSource=navigator.camera.PictureSourceType;
     destinationType = navigator.camera.DestinationType;
 	}
-for(var i=1; i<length; i++) {
-    if(i%2 == line)
-        $(className).eq(i).css('backgroundColor',color);
-}
 
 function $ref(id){
 	return document.getElementById(id);	
