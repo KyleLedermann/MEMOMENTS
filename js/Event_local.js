@@ -1,6 +1,12 @@
  var pictureSource;   // picture source
  var destinationType;
  document.addEventListener("deviceready",onDeviceReady,false);
+ 
+ function go_open(go_page){
+   $.mobile.changePage("#" + go_page);
+   if(go_page == 'page2')
+   	  displayData();
+}
 function onDeviceReady() {
 
 
