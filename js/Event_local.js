@@ -1,5 +1,15 @@
+ var pictureSource;   // picture source
+ var destinationType;
+ document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady() {
 
 
+console.log('deviceready');
+
+
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType = navigator.camera.DestinationType;
+	}
 for(var i=1; i<length; i++) {
     if(i%2 == line)
         $(className).eq(i).css('backgroundColor',color);
@@ -15,13 +25,6 @@ function populateDB(tx) {
 	tx.executeSql('CREATE TABLE IF NOT EXISTS fanevent (id AUTO_INCREMENT unique, Register, password, mobile, eventname, startdate, enddate, location, description, image)');	
 }
 
-
-// Transaction success callback
-//
-function successCB() {
-	var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
-	db.transaction(queryDB, errorCB);
-}
 function verify(){
 
     
@@ -114,4 +117,21 @@ function querySuccess(tx, results) {
 //
 function errorCB(err) {
 	console.log("Error processing SQL: "+err.code);
+}
+
+function dtFormat(input) {
+    if(!input) return "";
+	input = new Date(input);
+    var res = (input.getMonth()+1) + "/" + input.getDate() + "/" + input.getFullYear() + " ";
+    var hour = input.getHours()+1;
+    var ampm = "AM";
+	if(hour === 12) ampm = "PM";
+    if(hour > 12){
+        hour-=12;
+        ampm = "PM";
+    }
+    var minute = input.getMinutes()+1;
+    if(minute < 10) minute = "0" + minute;
+    res += hour + ":" + minute + " " + ampm;
+    return res;
 }
