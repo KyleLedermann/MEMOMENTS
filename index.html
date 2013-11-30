@@ -29,25 +29,19 @@
 <script type="text/javascript" src="js/camera.js"></script>
 
 </head> 
-<body onload="dispAllData();"> 
+<body onload="displayData();"> 
 <!-- Intro page -->
 <div data-role="page" id="page">
 	<div data-role="header">
-		<h1><img src="img/fsu.png" width="50" height="50"><br>Welcome to <br>FanEvents APP</h1>
+		<h1>Welcome to MEMOMENTS</h1>
 	</div>
 	<div data-role="content">	
 		<ul data-role="listview" id="menu" data-inset="true">
 			<li><a href="#" onclick="go_open('page2')">View All Events</a></li>
             <li><a href="#page3">Add New Event</a></li>
-			<li>Note:This app works in wifi-connectivity</li>
+			
 		</ul>
 
-        <a href="tel:226-236-5024" data-role="button" data-icon="star" data-theme="e">Call A-Team</a>
-        <button data-icon="check" data-iconpos="right" data-theme="b">Face Book</button>		
-	</div><BR>
-	<div data-role="footer" class="footer">
-		<div class="copy">&copy;2013 A-Team</div>
-	</div>
 </div>
 
 <!-- List page -->
@@ -62,7 +56,7 @@
     </ul>-->  
 	
 
-Add Event page 
+<!-- Add Event page -->
 <div data-role="page" id="page3" >
 	<div data-role="header">
 		<h1>Add New Event</h1>
