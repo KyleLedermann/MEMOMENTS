@@ -81,7 +81,7 @@ function save()
 
 function insertDB(tx)
 {
-		var sqlQuery = 'INSERT INTO fanevent (Register, password, mobile, eventname, startdate, enddate, location, description, image)VALUES ("'+$ref(			"txtRegister").value+'","'+$ref("txtPassword").value+'","'+$ref("txtMobile").value+'","'+$ref("txtEventName").value+'","'+$ref("txtStartDate").value+'","'+$ref("txtEndDate").value+'","'+$ref("txtLocation").value+'","'+$ref("txtDescription").value+'","Image")';
+		var sqlQuery = 'INSERT INTO fanevent (Register, password, mobile, eventname, startdate, enddate, location, description, image)VALUES ("'+$ref("txtRegister").value+'","'+$ref("txtPassword").value+'","'+$ref("txtMobile").value+'","'+$ref("txtEventName").value+'","'+$ref("txtStartDate").value+'","'+$ref("txtEndDate").value+'","'+$ref("txtLocation").value+'","'+$ref("txtDescription").value+'","Image")';
 		tx.executeSql(sqlQuery);
 }
 
