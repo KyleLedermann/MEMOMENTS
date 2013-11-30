@@ -31,29 +31,23 @@
 </head> 
 <body> 
 <!-- Intro page -->
-<div data-role="page" id="page" data-theme='b'>
+<div data-role="page" id="page">
 	<div data-role="header">
-		<h1>Welcome to MEMOMENTS</h1>
+		<h1><img src="img/fsu.png" width="50" height="50"><br>Welcome to <br>FanEvents APP</h1>
 	</div>
 	<div data-role="content">	
-	
-			<a href="#page3">makemomo</a>
-            
-			
-</div>
-	<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
-			<div data-role="navbar">
-			
-				<ul>
-					<li><a href="#"><i class="fa fa-question-circle fa-lg"></i><p>Help</p></a></li>
-					<li><a href="#"><i class="fa fa-shield fa-lg"></i><p>Terms & Conditions</p></a></li>
-					<li><a href="#"><i class="fa fa-info-circle fa-lg"></i><p>Credits</p></a></li>
-					<li><a href="#"><p>Copyright 2013</p></a></li>
-				</ul>
-			</div>
-        </div>
+		<ul data-role="listview" id="menu" data-inset="true">
+			<li><a href="#" onclick="go_open('page2')">View All Events</a></li>
+            <li><a href="#page3">Add New Event</a></li>
+			<li>Note:This app works in wifi-connectivity</li>
+		</ul>
 
-
+        <a href="tel:226-236-5024" data-role="button" data-icon="star" data-theme="e">Call A-Team</a>
+        <button data-icon="check" data-iconpos="right" data-theme="b">Face Book</button>		
+	</div><BR>
+	<div data-role="footer" class="footer">
+		<div class="copy">&copy;2013 A-Team</div>
+	</div>
 </div>
 
 
