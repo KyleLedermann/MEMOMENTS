@@ -1,147 +1,67 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
+  <head>
+    <title>Storage Example</title>
 
-<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
-		<!-- jQueryMobileCSS - original without styling -->
-        <link rel="stylesheet" href="css/jquerymobile.css" />
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-		<!-- nativeDroid core CSS -->
-        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+    // Populate the database
+    //
+    function populateDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    }
 
-		<!-- nativeDroid: Light/Dark -->
-        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+    // Query the database
+    //
+    function queryDB(tx) {
+        tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+    }
 
-		<!-- nativeDroid: Color Schemes -->
-        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.blue.css" id='jQMnDColor' />
-<title>jQuery Mobile Web App</title>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/nativedroid.script.js"></script>
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-<script type="text/javascript" src="js/camera.js"></script>
-<script type="text/javascript" src="js/geolocation.js"></script>
-<script type="text/javascript" src="js/EventDetail.js"></script>
-<script type="text/javascript" src="js/Event_local.js"></script>
+    // Query the success callback
+    //
+    function querySuccess(tx, results) {
+        console.log("Returned rows = " + results.rows.length);
+        // this will be true since it was a select statement and so rowsAffected was 0
+        if (!results.rowsAffected) {
+            console.log('No rows affected!');
+            return false;
+        }
+        // for an insert statement, this property will return the ID of the last inserted row
+        console.log("Last inserted row ID = " + results.insertId);
+    }
 
+    // Transaction error callback
+    //
+    function errorCB(err) {
+        console.log("Error processing SQL: "+err.code);
+    }
 
-</head> 
-<body> 
-<!-- Intro page -->
-<div data-role="page" id="page" data-theme='b'>
-	<div data-role="header">
-		<h1>Welcome to MEMOMENTS</h1>
-	</div>
-	<div data-role="content">	
-	
-			<a href="#page3">makemomo</a>
-            
-			
-</div>
-	<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
-			<div data-role="navbar">
-			
-				<ul>
-					<li><a href="#"><i class="fa fa-question-circle fa-lg"></i><p>Help</p></a></li>
-					<li><a href="#"><i class="fa fa-shield fa-lg"></i><p>Terms & Conditions</p></a></li>
-					<li><a href="#"><i class="fa fa-info-circle fa-lg"></i><p>Credits</p></a></li>
-					<li><a href="#"><p>Copyright 2013</p></a></li>
-				</ul>
-			</div>
-        </div>
+    // Transaction success callback
+    //
+    function successCB() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(queryDB, errorCB);
+    }
 
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
 
-</div>
-
-
-<!-- List page -->
-  <div data-role="page" id="page2" data-theme='b'>
-	<div data-role="header">
-		<h1>Event list</h1>		
-	</div>
-	<div data-role="content">
-    <div id='EventList'></div>
-	<!--<ul data-role='listview' id='list' data-theme='c'>	
-        
-    </ul>-->  
-		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
-			<div data-role="navbar">
-			
-				<ul>
-					<li><a href="#"><i class="fa fa-question-circle fa-lg"></i><p>Help</p></a></li>
-					<li><a href="#"><i class="fa fa-shield fa-lg"></i><p>Terms & Conditions</p></a></li>
-					<li><a href="#"><i class="fa fa-info-circle fa-lg"></i><p>Credits</p></a></li>
-					<li><a href="#"><p>Copyright 2013</p></a></li>
-				</ul>
-			</div>
-        </div>
-	</div>
-	</div>
-
-<!-- Add Event page -->
-<div data-role="page" id="page3" data-theme='b'>
-	<div data-role="header">
-		<h1>Add New Event</h1>
-	</div>
-    <div data-role="content">		
-	<div data-role="fieldcontain">    
-	    Register    <input type="text" name="Register" id="txtRegister"/> <br />
-        Password    <input type="password" name="Password" id="txtPassword"/> <br />
-        Mobile      <input type="tel" id="txtMobile" name="Mobile"/> <br />
-        EventName   <input type="text" id="txtEventName" name="EventName"/> <br />
-        From Date 	<input type="date" id="txtStartDate" name="StartDate"/><br />
-		To Date		<input type="date" id="txtEndDate" name="EndDate"/> <br />
-        Location    <input type="text" id="txtLocation" name="Location"/> <br />
-        Description <input type="text" id="txtDescription" name="Description" /> <br />
-        
-        <a href="" data-role="button" data-icon="star" data-theme="e" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</a>
-        <a href="" data-role="button" data-icon="star" data-theme="e" onclick="capturePhoto();">Capture Photo</a>
-  
-        <img style="display:none;width:100%;" id="smallImage" src="" />
-        <img style="display:none;width:100%;" id="largeImage" src="" />
-        <button data-icon="check" data-iconpos="right" data-theme="b" onclick="verify();">Save </button>  
- 	</div>
-    </div>
-		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
-			<div data-role="navbar">
-			
-				<ul>
-					<li><a href="#"><i class="fa fa-question-circle fa-lg"></i><p>Help</p></a></li>
-					<li><a href="#"><i class="fa fa-shield fa-lg"></i><p>Terms & Conditions</p></a></li>
-					<li><a href="#"><i class="fa fa-info-circle fa-lg"></i><p>Credits</p></a></li>
-					<li><a href="#"><p>Copyright 2013</p></a></li>
-				</ul>
-			</div>
-        </div>
-
-</div>
-
-<!-- View Event Detail -->
-<div data-role="page" id="page4">
-	<div data-role="header">
-		<h1>Event Detail</h1>
-	</div>
-	<div data-role="content">	
-		 <div id="eventdetail">
-		 </div>
-		 <a href="" data-role="button" data-icon="star" data-theme="e" id="view_location">View Location</a>
-	</div>
-</div>
-
-<!-- View Event Location -->
-<div data-role="page" id="page5">
-	<div data-role="header">
-		<h1>Event Location</h1>
-	</div>
-	<div data-role="content">
-		<p id="geolocation">Finding geolocation...</p>	
-		<div id="map_canvas">
-		</div>
-	</div>
-
-
-</body>
+    </script>
+  </head>
+  <body>
+    <h1>Example</h1>
+    <p>Database</p>
+  </body>
 </html>
