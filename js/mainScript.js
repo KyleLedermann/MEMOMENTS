@@ -14,14 +14,14 @@
     var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     //Initialize the database
     db.transaction(function(tx) {
-      tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber, smallImage VARBINARY(MAX)');
+      tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber, smallImage VARBINARY(MAX))');
     })
     
     function addContact() {
       var inputFirstName=document.getElementById("firstname").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
-	  var inputSmallImage=document.getElementById("smallImage").src;
+	  var inputSmallImage=document.getElementById("smallImage");
       
       db.transaction(function(tx) {
         tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, smallImage) VALUES (?,?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputSmallImage], function(tx, results) {
