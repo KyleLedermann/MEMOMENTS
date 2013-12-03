@@ -14,6 +14,7 @@
     var db=openDatabase('contacts','1.0','my contacts app', 2000000);
     //Initialize the database
     db.transaction(function(tx) {
+	tx.executeSql('DROP TABLE IF EXISTS contacts');
       tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, title, lastname, phonenumber, largeImage)');
     })
     
