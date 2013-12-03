@@ -14,31 +14,31 @@
     var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     //Initialize the database
     db.transaction(function(tx) {
-      tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber, smallImage)');
+      tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber)');
     })
     
     function addContact() {
       var inputFirstName=document.getElementById("firstname").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
-	  var inputSmallImage="smallImage";
+	  //var inputSmallImage="smallImage";
       
       db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber,smallImage) VALUES (?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputSmallImage], function(tx, results) {
+        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber) VALUES (?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputSmallImage], function(tx, results) {
           //Create the row and its cells
           var contactRow=document.createElement("tr");
           var id=document.createElement("td");
           var firstname=document.createElement("td");
           var lastname=document.createElement("td");
           var phonenumber=document.createElement("td");
-		  var smallImage=document.createElement("td");
+		  //var smallImage=document.createElement("td");
           var removeButton=document.createElement("td");
           //Set values coming from the database
           id.textContent=results.insertId;
           firstname.textContent=inputFirstName;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  smallImage.textContent=inputSmallImage;
+		  //smallImage.textContent=inputSmallImage;
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
           contactRow.setAttribute("id","c"+results.insertId);
@@ -46,7 +46,7 @@
           contactRow.appendChild(firstname);
           contactRow.appendChild(lastname);
           contactRow.appendChild(phonenumber);
-		  contactRow.appendChild(smallImage);
+		 // contactRow.appendChild(smallImage);
           contactRow.appendChild(removeButton);
           //Add the row to the table
           document.getElementById("contacts").appendChild(contactRow);
@@ -77,7 +77,7 @@
             var firstname=document.createElement("td");
             var lastname=document.createElement("td");
             var phonenumber=document.createElement("td");
-			var smallImage=document.createElement("td");
+			//var smallImage=document.createElement("td");
             var removeButton=document.createElement("td");
             //Set values coming from the database
             id.textContent=results.rows.item(i).id;
@@ -92,7 +92,7 @@
             contactRow.appendChild(firstname);
             contactRow.appendChild(lastname);
             contactRow.appendChild(phonenumber);
-			contactRow.appendChild(smallImage);
+			//contactRow.appendChild(smallImage);
             contactRow.appendChild(removeButton);
             //Add the row to the table
             document.getElementById("contacts").appendChild(contactRow);
