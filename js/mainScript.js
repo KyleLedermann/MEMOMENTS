@@ -84,7 +84,8 @@
             firstname.textContent=results.rows.item(i).firstname;
             lastname.textContent=results.rows.item(i).lastname;
             phonenumber.textContent=results.rows.item(i).phonenumber;
-			largeImage.textContent=results.rows.item(i).largeImage.src;
+			//largeImage.textContent=results.rows.item(i).largeImage;
+			largeImage.innerHTMLt='<img src"' + results.rows.item(i).largeImage + '">';
 			//smallImage.innerHTML='<img src"' + getPhoto(results.rows.item(i).id.smallImage) +'">';
 			//smallImage.innerHTML='<img src="'+ results.rows.item(i).smallImage +'">';
             removeButton.innerHTML='<button onclick="removeContact('+ results.rows.item(i).id +')">Delete</button>';
