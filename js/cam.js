@@ -20,7 +20,7 @@
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
+      smallImage.src = imageData;
     }
 
     // Called when a photo is successfully retrieved
@@ -48,7 +48,7 @@
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+        destinationType: destinationType.FILE_URI });
     }
 
     // A button will call this function
