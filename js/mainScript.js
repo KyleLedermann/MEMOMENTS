@@ -11,39 +11,39 @@
         destinationType=navigator.camera.DestinationType;
 		
 	}
-    var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
+    var db=openDatabase('contacts','1.0','my contacts app', 2000000);
     //Initialize the database
     db.transaction(function(tx) {
-      tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber, largeImage BLOB)');
+      tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, title, lastname, phonenumber, largeImage)');
     })
     
     function addContact() {
-      var inputFirstName=document.getElementById("firstname").value;
+      var inputTitle=document.getElementById("title").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
 	  var inputlargeImage=document.getElementById("largeImage").src;
       
       db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, largeImage) VALUES (?,?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
+        tx.executeSql('INSERT INTO contacts(title,lastname,phonenumber, largeImage) VALUES (?,?,?,?)',[inputTitle,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
           //Create the row and its cells
           var contactRow=document.createElement("tr");
           var id=document.createElement("td");
-          var firstname=document.createElement("td");
+          var title=document.createElement("td");
           var lastname=document.createElement("td");
           var phonenumber=document.createElement("td");
 		  var largeImage=document.createElement("td");
           var removeButton=document.createElement("td");
           //Set values coming from the database
           id.textContent=results.insertId;
-          firstname.textContent=inputFirstName;
+          title.textContent=inputTitle;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  largeImage.textContent=inputlargeImage;
+		  largeImage.textContent=inputLargeImage;
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
           contactRow.setAttribute("id","c"+results.insertId);
           contactRow.appendChild(id);
-          contactRow.appendChild(firstname);
+          contactRow.appendChild(title);
           contactRow.appendChild(lastname);
           contactRow.appendChild(phonenumber);
 		  contactRow.appendChild(largeImage);
@@ -74,24 +74,26 @@
             //Create the row and its cells
             var contactRow=document.createElement("tr");
             var id=document.createElement("td");
-            var firstname=document.createElement("td");
+            var title=document.createElement("td");
             var lastname=document.createElement("td");
             var phonenumber=document.createElement("td");
 			var largeImage=document.createElement("td");
             var removeButton=document.createElement("td");
             //Set values coming from the database
             id.textContent=results.rows.item(i).id;
-            firstname.textContent=results.rows.item(i).firstname;
+            title.textContent=results.rows.item(i).title;
             lastname.textContent=results.rows.item(i).lastname;
             phonenumber.textContent=results.rows.item(i).phonenumber;
 			largeImage.textContent=results.rows.item(i).largeImage;
+			//largeImage.textContent=results.rows.item(i).largeImage;
+			//largeImage.innerHTMLt='<img src"' + results.rows.item(i).largeImage + '">';
 			//smallImage.innerHTML='<img src"' + getPhoto(results.rows.item(i).id.smallImage) +'">';
 			//smallImage.innerHTML='<img src="'+ results.rows.item(i).smallImage +'">';
             removeButton.innerHTML='<button onclick="removeContact('+ results.rows.item(i).id +')">Delete</button>';
             //Add cells to the row
             contactRow.setAttribute("id","c"+results.rows.item(i).id);
             contactRow.appendChild(id);
-            contactRow.appendChild(firstname);
+            contactRow.appendChild(title);
             contactRow.appendChild(lastname);
             contactRow.appendChild(phonenumber);
 			contactRow.appendChild(largeImage);
