@@ -38,7 +38,7 @@
           firstname.textContent=inputFirstName;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  smallImage.textContent='<img src="'+inputSmallImage+'">';
+		  smallImage.textContent='<img src="'+inputSmallImage+'" />';
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
           contactRow.setAttribute("id","c"+results.insertId);
