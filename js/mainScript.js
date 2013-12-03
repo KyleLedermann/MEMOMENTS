@@ -5,7 +5,11 @@
     // device APIs are available
     //Open or create the database
 	 function onDeviceReady() {
-    
+	 
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+		
 	}
     var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     //Initialize the database
