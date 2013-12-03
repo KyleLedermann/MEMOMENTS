@@ -1,4 +1,4 @@
-  <script>
+
     //Open or create the database
     var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     
@@ -85,4 +85,3 @@
     }
     
     window.addEventListener("load", listContacts, true);
-  </script>
