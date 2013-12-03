@@ -38,8 +38,8 @@
           title.textContent=inputTitle;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  largeImage.innerHTML='<img src"' + results.insertId + '">';
-		  //largeImage.textContent=inputlargeImage;
+		  //largeImage.innerHTML='<img src"' + results.insertId + '">';
+		  largeImage.textContent=inputlargeImage;
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
           contactRow.setAttribute("id","c"+results.insertId);
