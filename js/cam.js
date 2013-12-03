@@ -4,7 +4,7 @@
 
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
+      var smallImage = document.getElementById('largeImage');
 
       // Unhide image elements
       //
