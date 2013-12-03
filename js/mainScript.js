@@ -21,7 +21,7 @@
       var inputFirstName=document.getElementById("firstname").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
-	  var inputlargeImage=document.getElementById("largeImage");
+	  var inputlargeImage=document.getElementById("largeImage").src;
       
       db.transaction(function(tx) {
         tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, largeImage) VALUES (?,?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
@@ -38,7 +38,8 @@
           firstname.textContent=inputFirstName;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  largeImage.textContent=inputlargeImage;
+		  largeImage.innerHTML='<img src"' + results.largeImage + '">';
+		  //largeImage.textContent=inputlargeImage;
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
           contactRow.setAttribute("id","c"+results.insertId);
@@ -86,7 +87,7 @@
             phonenumber.textContent=results.rows.item(i).phonenumber;
 			largeImage.textContent=results.rows.item(i).largeImage;
 			//largeImage.textContent=results.rows.item(i).largeImage;
-			//largeImage.innerHTMLt='<img src"' + results.rows.item(i).largeImage + '">';
+			//largeImage.innerHTML='<img src"' + results.rows.item(i).largeImage + '">';
 			//smallImage.innerHTML='<img src"' + getPhoto(results.rows.item(i).id.smallImage) +'">';
 			//smallImage.innerHTML='<img src="'+ results.rows.item(i).smallImage +'">';
             removeButton.innerHTML='<button onclick="removeContact('+ results.rows.item(i).id +')">Delete</button>';
