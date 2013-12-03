@@ -1,11 +1,17 @@
 
+		
+		 document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
     //Open or create the database
-    var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
+	 function onDeviceReady() {
     
+	}
+    var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     //Initialize the database
     db.transaction(function(tx) {
       tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber)');
-    });
+    })
     
     function addContact() {
       var inputFirstName=document.getElementById("firstname").value;
