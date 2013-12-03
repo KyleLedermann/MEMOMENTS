@@ -36,7 +36,7 @@
           //Set values coming from the database
           id.textContent=results.insertId;
           title.textContent=inputtitle;
-          description.textContent=inputLastName;
+          description.textContent=inputDescription;
           phonenumber.textContent=inputPhoneNumber;
 		  largeImage.innerHTML='<img src"' + results.insertId + '">';
 		  //largeImage.textContent=inputlargeImage;
