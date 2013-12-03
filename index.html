@@ -47,11 +47,11 @@
         
       <h1>Add Contacts</h1>
 	  <li data-role="fieldcontain">
-      <label>Title: <input type="text" name="title" id="title" data-clear-btn="true" placeholder="Type your title here..." /></label>
+      <label>Firstname: <input type="text" name="firstname" id="firstname" data-clear-btn="true" placeholder="Type your title here..." /></label>
 	  </li>
 	  
 	  <li data-role="fieldcontain">
-      <label>Lastname: <input type="text" name="description" id="description" data-clear-btn="true" placeholder="Type your description here..." /></label>
+      <label>Lastname: <input type="text" name="lastname" id="lastname" data-clear-btn="true" placeholder="Type your description here..." /></label>
 	  </li>
 	  
 					    <li data-role="fieldcontain">
@@ -93,7 +93,7 @@
                     </li>
 				<li>
 				<img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
-				<img style="display:none;width:100px;height:100px" id="largeImage" src="" />
+				<img style="display:none;width:100px;height:100px;" id="largeImage" src="" />
 				</li>
 					
 </ul>
@@ -101,14 +101,13 @@
 	  
       <label>Phone number: <input type="tel" name="phonenumber" id="phonenumber" /></label>
 	   <button onclick="capturePhoto();">Capture Photo</button> <br>
-	   <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">Grab photo</button><br>
       <button onclick="addContact();">Add</button>
     </section>
     <section id="output">
       <h1>View Contacts</h1>
       <table id="contacts" border="1" cellspacing="0" style="width:100%">
         <th>Id</th>
-        <th>Title</th>
+        <th>Firstname</th>
         <th>Lastname</th>
         <th>Phonenumber</th>
 		<th>Photo</th>

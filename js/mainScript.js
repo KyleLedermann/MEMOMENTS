@@ -11,7 +11,7 @@
         destinationType=navigator.camera.DestinationType;
 		
 	}
-    var db=openDatabase('contacts','1.0','my contacts app', 20000000);
+    var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     //Initialize the database
     db.transaction(function(tx) {
       tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber, largeImage BLOB)');
@@ -38,7 +38,6 @@
           firstname.textContent=inputFirstName;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  //largeImage.innerHTML='<img src"' + results.largeImage + '">';
 		  largeImage.textContent=inputlargeImage;
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
@@ -86,8 +85,6 @@
             lastname.textContent=results.rows.item(i).lastname;
             phonenumber.textContent=results.rows.item(i).phonenumber;
 			largeImage.textContent=results.rows.item(i).largeImage;
-			//largeImage.textContent=results.rows.item(i).largeImage;
-			//largeImage.innerHTML='<img src"' + results.rows.item(i).largeImage + '">';
 			//smallImage.innerHTML='<img src"' + getPhoto(results.rows.item(i).id.smallImage) +'">';
 			//smallImage.innerHTML='<img src="'+ results.rows.item(i).smallImage +'">';
             removeButton.innerHTML='<button onclick="removeContact('+ results.rows.item(i).id +')">Delete</button>';
