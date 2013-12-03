@@ -14,7 +14,6 @@
     var db=openDatabase('contacts','1.0','my contacts app', 2000000);
     //Initialize the database
     db.transaction(function(tx) {
-	tx.executeSql('DROP TABLE IF EXISTS contacts');
       tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber, largeImage)');
     })
     
@@ -39,7 +38,7 @@
           firstname.textContent=inputFirstName;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
-		  largeImage.textContent=inputLargeImage;
+		  largeImage.textContent=inputlargeImage;
           removeButton.innerHTML='<button onclick="removeContact('+ results.insertId +')">Delete</button>';
           //Add cells to the row
           contactRow.setAttribute("id","c"+results.insertId);
