@@ -21,7 +21,7 @@
       var inputFirstName=document.getElementById("firstname").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
-	  var inputSmallImage=document.getElementById("smallImage").value;
+	  var inputSmallImage=document.getElementById("smallImage");
       
       db.transaction(function(tx) {
         tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, smallImage) VALUES (?,?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputSmallImage], function(tx, results) {
