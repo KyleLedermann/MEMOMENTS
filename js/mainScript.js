@@ -14,18 +14,17 @@
     var db=openDatabase('contacts','1.0','my contacts app', 2000000);
     //Initialize the database
     db.transaction(function(tx) {
-	tx.executeSql('DROP TABLE IF EXISTS contacts');
       tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, title, lastname, phonenumber, largeImage)');
     })
     
     function addContact() {
-      var inputTitle=document.getElementById("title").value;
+      var inputtitle=document.getElementById("title").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
 	  var inputlargeImage=document.getElementById("largeImage").src;
       
       db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO contacts(title,lastname,phonenumber, largeImage) VALUES (?,?,?,?)',[inputTitle,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
+        tx.executeSql('INSERT INTO contacts(title,lastname,phonenumber, largeImage) VALUES (?,?,?,?)',[inputtitle,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
           //Create the row and its cells
           var contactRow=document.createElement("tr");
           var id=document.createElement("td");
@@ -36,7 +35,7 @@
           var removeButton=document.createElement("td");
           //Set values coming from the database
           id.textContent=results.insertId;
-          title.textContent=inputTitle;
+          title.textContent=inputtitle;
           lastname.textContent=inputLastName;
           phonenumber.textContent=inputPhoneNumber;
 		  largeImage.textContent=inputLargeImage;
