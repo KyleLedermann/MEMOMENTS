@@ -21,10 +21,10 @@
       var inputFirstName=document.getElementById("firstname").value;
       var inputLastName=document.getElementById("lastname").value;
       var inputPhoneNumber=document.getElementById("phonenumber").value;
-	  var inputSmallImage=document.getElementById("smallImage");
+	  var inputSmallImage="smallImage";
       
       db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, smallImage) VALUES (?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputsmallImage], function(tx, results) {
+        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber,smallImage) VALUES (?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputsmallImage], function(tx, results) {
           //Create the row and its cells
           var contactRow=document.createElement("tr");
           var id=document.createElement("td");
