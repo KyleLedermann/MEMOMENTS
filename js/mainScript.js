@@ -24,7 +24,7 @@
 	  //var inputSmallImage="smallImage";
       
       db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber) VALUES (?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputSmallImage], function(tx, results) {
+        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber) VALUES (?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber], function(tx, results) {
           //Create the row and its cells
           var contactRow=document.createElement("tr");
           var id=document.createElement("td");
@@ -84,7 +84,7 @@
             firstname.textContent=results.rows.item(i).firstname;
             lastname.textContent=results.rows.item(i).lastname;
             phonenumber.textContent=results.rows.item(i).phonenumber;
-			smallImage.textContent=results.rows.item(i).smallImage;
+			//smallImage.textContent=results.rows.item(i).smallImage;
             removeButton.innerHTML='<button onclick="removeContact('+ results.rows.item(i).id +')">Delete</button>';
             //Add cells to the row
             contactRow.setAttribute("id","c"+results.rows.item(i).id);
