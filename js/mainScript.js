@@ -24,7 +24,7 @@
 	  var inputlargeImage=document.getElementById("largeImage").src;
       
       db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, smallImage) VALUES (?,?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
+        tx.executeSql('INSERT INTO contacts(firstname,lastname,phonenumber, largeImage) VALUES (?,?,?,?)',[inputFirstName,inputLastName,inputPhoneNumber, inputlargeImage], function(tx, results) {
           //Create the row and its cells
           var contactRow=document.createElement("tr");
           var id=document.createElement("td");
