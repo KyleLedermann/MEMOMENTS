@@ -84,8 +84,8 @@
             firstname.textContent=results.rows.item(i).firstname;
             lastname.textContent=results.rows.item(i).lastname;
             phonenumber.textContent=results.rows.item(i).phonenumber;
-			document.getElementById("smallImage").innerHTML += '<img src="' + results.rows.item(i).smallImage + '" width="100px" height="100px">';
-			smallImage.innerHTML='<img src="'+ results.rows.item(i).smallImage +'">';
+			smallImage.innerHTML='<img src"' + getPhoto(results.rows.item(i).id.smallImage) +'">';
+			//smallImage.innerHTML='<img src="'+ results.rows.item(i).smallImage +'">';
             removeButton.innerHTML='<button onclick="removeContact('+ results.rows.item(i).id +')">Delete</button>';
             //Add cells to the row
             contactRow.setAttribute("id","c"+results.rows.item(i).id);
