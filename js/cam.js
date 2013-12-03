@@ -1,10 +1,3 @@
-
-
-    var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
-
-    // Called when a photo is successfully retrieved
-    //
     function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
@@ -20,7 +13,7 @@
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
-      smallImage.src = imageData;
+      smallImage.src = "data:image/jpeg;base64," + imageData;
     }
 
     // Called when a photo is successfully retrieved
