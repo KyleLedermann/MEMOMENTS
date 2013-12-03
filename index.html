@@ -34,23 +34,13 @@
     // device APIs are available
     //Open or create the database
 	 function onDeviceReady() {
-	 var db = window.openDatabase("contact", "1.0", "my contacts app", 200000);
-        db.transaction(populateDB, errorCB, successCB);
-	}
     
+	}
+    var db=openDatabase('contacts','1.0','my contacts app', 2 * 1024 * 1024);
     //Initialize the database
-   function populateDB(tx)  {
+    db.transaction(function(tx) {
       tx.executeSql('CREATE TABLE IF NOT EXISTS contacts(id integer primary key autoincrement, firstname, lastname, phonenumber)');
-    });
-	   function errorCB(err) {
-        alert("Error processing SQL: "+err);
-    }
-
-    // Transaction success callback
-    //
-    function successCB() {
-        alert("success!");
-    }
+    })
     
     function addContact() {
       var inputFirstName=document.getElementById("firstname").value;
